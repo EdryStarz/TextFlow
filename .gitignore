@@ -1,0 +1,11 @@
+**/bin/
+**/obj/
+**/publish/
+**/work/
+**/data/
+*.user
+*.suo
+*.pdb
+*.exe
+.vs/
+
