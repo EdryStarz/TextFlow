@@ -6,16 +6,26 @@ TextFlow is a native Windows utility for saving reusable text, assigning global
 hotkeys, and pasting Unicode content into any application. It also includes a
 Spotlight-style search palette and an importer for QuickTextPaste data.
 
+**Status: Prototype.** The repository includes the Windows application and a
+lightweight behavior-check executable. The portfolio review ran all nine checks
+successfully; those checks do not replace testing paste behavior in every target
+application.
+
 ## Highlights
 
 - Global hotkeys without polling
-- Unicode-safe clipboard paste with clipboard restoration
+- Unicode-safe clipboard paste with serialized input transactions
 - Quick search palette
 - File and application shortcuts
 - QuickTextPaste `.ini` import
 - Portable JSON storage beside the executable
 - Single-file, self-contained Windows build
 - No third-party NuGet dependencies
+
+Pasting keeps the inserted text on the clipboard. It does not restore the old
+clipboard value: restoration can race with the target application's paste
+handling. Concurrent paste requests are serialized to avoid overwriting each
+other's text.
 
 ## Stack
 
